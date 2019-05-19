@@ -10,7 +10,7 @@ BookLibrary
  * 输入 sqlite3 book.db < book.sql 创建数据库
  * 在项目根目录下执行. venv/bin/activate， 开启虚拟机
  * 安装FLask模块 输入pip install Flask
- * 输入deactive, 关闭虚拟机
+ * 输入deactive, 关闭虚拟机 
  * 在虚拟机开启情况下，输入python book.py，然后在浏览器中打开127.0.0.1:5000即可访问
 
 ## 导入数据
