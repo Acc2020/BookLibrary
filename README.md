@@ -4,7 +4,7 @@ BookLibrary
 一个基于Flask框架的简单图书管理系统
 
 
-## 搭配环境
+## 搭配环境::
  * 输入 sudo apt-get install sqlite3 安装sqlite3
  * 输入 sqlite3 book.db < book.sql 创建数据库
  * 在项目根目录下执行. venv/bin/activate， 开启虚拟机
