@@ -368,9 +368,7 @@ def reader_book(id):
     error = None
     book = query_db('''select * from books where book_id = ?''', [id], one=True)
     reader = query_db('''select * from borrows where book_id = ?''', [id], one=True)
-    count = query_db('''select count(book_id) from borrows where user_name = ? ''',
-                     [g.user], one=True)
-
+    count = query_db('''select count(book_id) from borrows where user_name = ? ''',[g.user], one=True)
     current_time = time.strftime('%Y-%m-%d', time.localtime(time.time()))
     return_time = time.strftime('%Y-%m-%d', time.localtime(time.time() + 2600000))
     if request.method == 'POST':
@@ -381,12 +379,8 @@ def reader_book(id):
                 error = 'You can\'t borrow more than three books.'
             else:
                 db = get_db()
-                db.execute('''insert into borrows (user_name, book_id, date_borrow, \
-					date_return) values (?, ?, ?, ?) ''', [g.user, id,
-                                                           current_time, return_time])
-                db.execute('''insert into histroys (user_name, book_id, date_borrow, \
-					status) values (?, ?, ?, ?) ''', [g.user, id,
-                                                      current_time, 'not return'])
+                db.execute('''insert into borrows (user_name, book_id, date_borrow, \date_return) values (?, ?, ?, ?) ''', [g.user, id,current_time, return_time])
+                db.execute('''insert into histroys (user_name, book_id, date_borrow, \status) values (?, ?, ?, ?) ''', [g.user, id,current_time, 'not return'])
                 db.commit()
                 return redirect(url_for('reader_book', id=id))
         return render_template('reader_book.html', book=book, reader=reader, error=error)
